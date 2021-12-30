@@ -3,40 +3,72 @@
 #include <stdio.h>
 #include <time.h>
 #pragma warning(disable:4996)
-void Inputdata(int* a,int* b)
+
+void lni(int kor[100],int eng[100],int math[100])
 {
-	printf("input 2 data:");
-	scanf("%d %d",a,b);
+	int i;
+	srand(time(NULL));
+	
+	for(i=0; i<100; i++)
+	{
+		kor[i]=rand()%101;
+		eng[i]=rand()%101;
+		math[i]=rand()%101;	
+	}
 	
 }
 
-void Caldata(int a,int b,int* c,int* d,int* e,float* f)
+void TotalAvr(int kor[100],int eng[100],int math[100],int total[100],float avr[100])
 {
-	*c=a+b;
-	*d=a-b;
-	*e=a*b;
-	*f=(float)a/b;
+	int i;
+	for(i=0; i<100; i++)
+	{
+		total[i]=kor[i]+eng[i]+math[i];
+		avr[i]=total[i]/3.0;
+	}
 	
 }
 
-void Printdata(int a,int b,int c,int d,int e,float f)
+void maxman(int total[100],int* maxindex)
 {
+	int i;
+	*maxindex=0;
 	
-	printf("%d + %d = %d\n",a,b,c);
-	printf("%d - %d = %d\n",a,b,d);
-	printf("%d * %d = %d\n",a,b,e);
-	printf("%d / %d = %.2f\n",a,b,f);
+	for(i=0; i<100; i++)
+	{
+		if(total[*maxindex]<total[i])
+		{
+			*maxindex=i;
+		}
+	}
+	
+}
+
+void Print(int kor[100],int eng[100],int math[100],int total[100],float avr[100],int maxindex)
+{
+	int i;
+	
+	for(i=0; i<100; i++)
+	{
+		printf("%d] %d\t %d\t %d\t %d\t %.2f\n",i,kor[i],eng[i],math[i],total[i],avr[i]);
+		
+	}
+	printf("max index : %d\n",maxindex);
 }
 
 int main() {
 
-	int a,b,c,d,e;
-	float f;
+	int maxindex;
+	int kor[100];
+	int eng[100];
+	int math[100];
 	
-	Inputdata(&a,&b);
-	Caldata(a,b,&c,&d,&e,&f);
-	Printdata(a,b,c,d,e,f);
+	int total[100];
+	float avr[100];
 	
-
+	lni(kor,eng,math);
+	TotalAvr(kor,eng,math,total,avr);
+	maxman(total,&maxindex);
+	Print(kor,eng,math,total,avr,maxindex);
 	return 0;
 }
