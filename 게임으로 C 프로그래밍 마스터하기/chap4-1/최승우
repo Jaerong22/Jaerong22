@@ -3,28 +3,40 @@
 #include <stdio.h>
 #include <time.h>
 #pragma warning(disable:4996)
-void test(int data[5]){
-	int i;
+void Inputdata(int* a,int* b)
+{
+	printf("input 2 data:");
+	scanf("%d %d",a,b);
 	
-	for(i=0; i<5; i++)
-	{
-		data[i]=data[i]*2;
-	}
+}
+
+void Caldata(int a,int b,int* c,int* d,int* e,float* f)
+{
+	*c=a+b;
+	*d=a-b;
+	*e=a*b;
+	*f=(float)a/b;
 	
+}
+
+void Printdata(int a,int b,int c,int d,int e,float f)
+{
+	
+	printf("%d + %d = %d\n",a,b,c);
+	printf("%d - %d = %d\n",a,b,d);
+	printf("%d * %d = %d\n",a,b,e);
+	printf("%d / %d = %.2f\n",a,b,f);
 }
 
 int main() {
 
-	int i;
-	int my[5]={1,2,3,4,5};
+	int a,b,c,d,e;
+	float f;
 	
-	test(my);
+	Inputdata(&a,&b);
+	Caldata(a,b,&c,&d,&e,&f);
+	Printdata(a,b,c,d,e,f);
 	
-	for(i=0; i<5; i++)
-	{
-		printf("%d->%d\n",i,my[i]);
-	}
-
 
 	return 0;
 }
