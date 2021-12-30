@@ -1,0 +1,42 @@
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#pragma warning(disable:4996)
+void Inputdata(int* a,int* b)
+{
+	printf("input 2 data:");
+	scanf("%d %d",a,b);
+	
+}
+
+void Caldata(int a,int b,int* c,int* d,int* e,float* f)
+{
+	*c=a+b;
+	*d=a-b;
+	*e=a*b;
+	*f=(float)a/b;
+	
+}
+
+void Printdata(int a,int b,int c,int d,int e,float f)
+{
+	
+	printf("%d + %d = %d\n",a,b,c);
+	printf("%d - %d = %d\n",a,b,d);
+	printf("%d * %d = %d\n",a,b,e);
+	printf("%d / %d = %.2f\n",a,b,f);
+}
+
+int main() {
+
+	int a,b,c,d,e;
+	float f;
+	
+	Inputdata(&a,&b);
+	Caldata(a,b,&c,&d,&e,&f);
+	Printdata(a,b,c,d,e,f);
+	
+
+	return 0;
+}
