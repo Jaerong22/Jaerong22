@@ -1,0 +1,30 @@
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#pragma warning(disable:4996)
+void test(int data[5]){
+	int i;
+	
+	for(i=0; i<5; i++)
+	{
+		data[i]=data[i]*2;
+	}
+	
+}
+
+int main() {
+
+	int i;
+	int my[5]={1,2,3,4,5};
+	
+	test(my);
+	
+	for(i=0; i<5; i++)
+	{
+		printf("%d->%d\n",i,my[i]);
+	}
+
+
+	return 0;
+}
